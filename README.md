@@ -1,1 +1,1 @@
-# node-red-contrib-baidu-device
+# node-red-contrib-baidu-iot-device
