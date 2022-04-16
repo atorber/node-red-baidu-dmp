@@ -8,8 +8,11 @@
       "url": "https://github.com/atorber/node-red-contrib-baidu-iot-device/issues"
     },
     "dependencies": {
-      "is-utf8": "^0.2.1",
-      "mqtt": "^2.14.0"
+      "mqtt": "^2.14.0",
+      "crypto": "^1.0.1",
+      "urlencode": "^1.1.0",
+      "request-promise": "^4.2.6",
+      "https-proxy-agent": "5.0.0"
     },
     "description": "MQTT Node for Baidu IoTPlatform using custom authentication",
     "homepage": "https://github.com/atorber/node-red-contrib-baidu-iot-device#readme",
