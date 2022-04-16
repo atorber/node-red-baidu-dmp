@@ -35,6 +35,10 @@
     "type": "git",
     "url": "git+https://github.com/atorber/node-red-contrib-baidu-iot-device.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   }

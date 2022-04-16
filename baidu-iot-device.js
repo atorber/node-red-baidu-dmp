@@ -61,7 +61,7 @@ async function doreq(HOST, PORT, INSTANCE, PRODUCT_KEY, DEVICE_NAME, DEVICE_SECR
     try {
         console.log('开始请求')
         let r = await rp(opt)
-        console.log(r)
+        // console.log(r)
         str = JSON.stringify(r) + '\n'
     } catch (err) {
         console.error('请求出错了',err.error)
@@ -497,7 +497,7 @@ module.exports = function (RED) {
             let keys = ''
             if (devicesecert) {
                 keys = await doreq(endpoint, endpointport, instanceid, productkey, devicename, devicesecert)
-                console.log('cert=========================', keys)
+                // console.log('cert=========================', keys)
             }
             const mqttconfig = JSON.parse(keys)
 
