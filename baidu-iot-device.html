@@ -493,9 +493,9 @@
                 "productkey": { value: "", required: true },
                 "devicename": { value: "", required: true },
                 "devicesecert": { value: "", required: true },
-                "effectivetime": { value: 1 },
+                "effectivetime": { value: "1" , required: true},
                 name: { value: "" },
-                broker: { value: "", required: true },
+                broker: { value: "", },
                 port: { value: 1883, required: false, validate: RED.validators.number(true) },
                 tls: { type: "tls-config", required: false },
                 clientid: {
@@ -1030,7 +1030,7 @@
                         var topic = `thing/${confNode.productkey}/${confNode.devicename}/command/invoke`
                         $("#node-input-topic").val(topic);
                     }
- 
+
                     $("div.form-row-mqtt5").toggleClass("form-row-mqtt5-active", !!v5);
                     $("div.form-row.form-row-device-static").toggleClass("form-row-device-static-disabled", !!dynamic)
                 }
