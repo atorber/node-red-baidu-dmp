@@ -55,4 +55,5 @@ module.exports = function(RED) {
             });
         })
     }
+    RED.nodes.registerType("dmp auth", DeviceAuth);
 }
