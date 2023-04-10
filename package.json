@@ -28,7 +28,8 @@
   "license": "Apache-2.0",
   "node-red": {
     "nodes": {
-      "baidu-iot-device": "baidu-iot-device.js"
+      "baidu-iot-device": "baidu-iot-device.js",
+      "baidu-dmp":"baidu-dmp.js"
     }
   },
   "repository": {
