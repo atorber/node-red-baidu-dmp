@@ -3,7 +3,7 @@ var crypto = require('crypto');
 
 // 定义节点函数
 module.exports = function(RED) {
-    function LowerCaseNode(config) {
+    function DeviceAuth(config) {
         RED.nodes.createNode(this,config);
         var node = this;
         // 获取配置参数

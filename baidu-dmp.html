@@ -1,6 +1,6 @@
 <script type="text/javascript">
     // 定义节点的属性
-    RED.nodes.registerType('lower-case', {
+    RED.nodes.registerType('device-auth', {
         category: 'function',      // 节点的分类
         color: '#a6bbcf',          // 节点的颜色
         defaults: {                // 节点的配置参数
@@ -14,7 +14,7 @@
         outputs: 1,                  // 节点的输出端口数
         icon: "file.png",           // 节点的图标
         label: function () {         // 节点的标签
-            return this.name || "lower-case";
+            return this.name || "device-auth";
         },
         oneditprepare: function () { // 编辑对话框准备时的回调函数
 
@@ -34,7 +34,7 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="lower-case">
+<script type="text/x-red" data-template-name="device-auth">
     <!-- 定义节点的编辑对话框 -->
 <div class="form-row">
     <label for="node-input-instanceId"><i class="fa fa-tag"></i> 实例ID</label>
@@ -58,7 +58,7 @@
 </div>
 </script>
 
-<script type="text/x-red" data-help-name="lower-case">
+<script type="text/x-red" data-help-name="device-auth">
     <!-- 定义节点的帮助文本 -->
 <p>这个节点用来获取设备资源的接口。</p>
 <p>它需要配置以下参数：</p>
