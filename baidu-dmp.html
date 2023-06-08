@@ -1,6 +1,6 @@
 <script type="text/javascript">
     // 定义节点的属性
-    RED.nodes.registerType('device-auth', {
+    RED.nodes.registerType('device auth', {
         category: 'IoT',      // 节点的分类
         color: '#a6bbcf',          // 节点的颜色
         defaults: {                // 节点的配置参数
@@ -14,7 +14,73 @@
         outputs: 1,                  // 节点的输出端口数
         icon: "file.png",           // 节点的图标
         label: function () {         // 节点的标签
-            return this.name || "device-auth";
+            return this.name || "device auth";
+        },
+        oneditprepare: function () { // 编辑对话框准备时的回调函数
+
+        },
+        oneditsave: function () {    // 编辑对话框保存时的回调函数
+
+        },
+        oneditcancel: function () {  // 编辑对话框取消时的回调函数
+
+        },
+        oneditdelete: function () {  // 编辑对话框删除时的回调函数
+
+        },
+        oneditresize: function () {  // 编辑对话框调整大小时的回调函数
+
+        }
+    });
+        // 定义节点的属性
+        RED.nodes.registerType('property format', {
+        category: 'IoT',      // 节点的分类
+        color: '#a6bbcf',          // 节点的颜色
+        defaults: {                // 节点的配置参数
+            instanceId: { value: "" },    // 实例ID
+            productkey: { value: "" },    // 产品key
+            deviceName: { value: "" },    // 设备名称
+            deviceSecret: { value: "" },  // 设备密钥
+            host: { value: "" }           // 主机地址
+        },
+        inputs: 1,                   // 节点的输入端口数
+        outputs: 1,                  // 节点的输出端口数
+        icon: "file.png",           // 节点的图标
+        label: function () {         // 节点的标签
+            return this.name || "property format";
+        },
+        oneditprepare: function () { // 编辑对话框准备时的回调函数
+
+        },
+        oneditsave: function () {    // 编辑对话框保存时的回调函数
+
+        },
+        oneditcancel: function () {  // 编辑对话框取消时的回调函数
+
+        },
+        oneditdelete: function () {  // 编辑对话框删除时的回调函数
+
+        },
+        oneditresize: function () {  // 编辑对话框调整大小时的回调函数
+
+        }
+    });
+            // 定义节点的属性
+            RED.nodes.registerType('event format', {
+        category: 'IoT',      // 节点的分类
+        color: '#a6bbcf',          // 节点的颜色
+        defaults: {                // 节点的配置参数
+            instanceId: { value: "" },    // 实例ID
+            productkey: { value: "" },    // 产品key
+            deviceName: { value: "" },    // 设备名称
+            deviceSecret: { value: "" },  // 设备密钥
+            host: { value: "" }           // 主机地址
+        },
+        inputs: 1,                   // 节点的输入端口数
+        outputs: 1,                  // 节点的输出端口数
+        icon: "file.png",           // 节点的图标
+        label: function () {         // 节点的标签
+            return this.name || "event format";
         },
         oneditprepare: function () { // 编辑对话框准备时的回调函数
 
@@ -34,7 +100,7 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="device-auth">
+<script type="text/x-red" data-template-name="device auth">
     <!-- 定义节点的编辑对话框 -->
 <div class="form-row">
     <label for="node-input-instanceId"><i class="fa fa-tag"></i> 实例ID</label>
@@ -58,7 +124,85 @@
 </div>
 </script>
 
-<script type="text/x-red" data-help-name="device-auth">
+<script type="text/x-red" data-help-name="device auth">
+    <!-- 定义节点的帮助文本 -->
+<p>这个节点用来获取设备资源的接口。</p>
+<p>它需要配置以下参数：</p>
+<ul>
+    <li><b>实例ID</b>: 你在平台上创建的实例ID。</li>
+    <li><b>产品key</b>: 你在平台上创建的产品key。</li>
+    <li><b>设备名称</b>: 你在平台上创建的设备名称。</li>
+    <li><b>设备密钥</b>: 你在平台上创建的设备密钥。</li>
+    <li><b>主机地址</b>: 平台提供的接口地址。</li>
+</ul>
+<p>它接收一个输入消息，其中可以包含一个resourceType参数，表示要获取的资源类型，目前只支持MQTT类型。如果没有输入消息或者没有resourceType参数，它会默认使用MQTT类型。</p>
+<p>它发送一个输出消息，其中包含有平台返回的资源信息，比如MQTT的地址，端口，用户名，密码等。</p>
+</script>
+
+<script type="text/x-red" data-template-name="property format">
+    <!-- 定义节点的编辑对话框 -->
+<div class="form-row">
+    <label for="node-input-instanceId"><i class="fa fa-tag"></i> reqId</label>
+    <input type="text" id="node-input-instanceId" placeholder="请输入reqId">
+</div>
+<div class="form-row">
+    <label for="node-input-productkey"><i class="fa fa-key"></i> method</label>
+    <input type="text" id="node-input-productkey" placeholder="请输入method">
+</div>
+<div class="form-row">
+    <label for="node-input-deviceName"><i class="fa fa-desktop"></i> version</label>
+    <input type="text" id="node-input-deviceName" placeholder="请输入version">
+</div>
+<div class="form-row">
+    <label for="node-input-deviceSecret"><i class="fa fa-lock"></i> timestamp</label>
+    <input type="text" id="node-input-deviceSecret" placeholder="请输入timestamp">
+</div>
+<div class="form-row">
+    <label for="node-input-host"><i class="fa fa-globe"></i> properties</label>
+    <input type="text" id="node-input-host" placeholder="请输入properties">
+</div>
+</script>
+
+<script type="text/x-red" data-help-name="property format">
+    <!-- 定义节点的帮助文本 -->
+<p>这个节点用来获取设备资源的接口。</p>
+<p>它需要配置以下参数：</p>
+<ul>
+    <li><b>实例ID</b>: 你在平台上创建的实例ID。</li>
+    <li><b>产品key</b>: 你在平台上创建的产品key。</li>
+    <li><b>设备名称</b>: 你在平台上创建的设备名称。</li>
+    <li><b>设备密钥</b>: 你在平台上创建的设备密钥。</li>
+    <li><b>主机地址</b>: 平台提供的接口地址。</li>
+</ul>
+<p>它接收一个输入消息，其中可以包含一个resourceType参数，表示要获取的资源类型，目前只支持MQTT类型。如果没有输入消息或者没有resourceType参数，它会默认使用MQTT类型。</p>
+<p>它发送一个输出消息，其中包含有平台返回的资源信息，比如MQTT的地址，端口，用户名，密码等。</p>
+</script>
+
+<script type="text/x-red" data-template-name="event format">
+    <!-- 定义节点的编辑对话框 -->
+<div class="form-row">
+    <label for="node-input-instanceId"><i class="fa fa-tag"></i> reqId</label>
+    <input type="text" id="node-input-instanceId" placeholder="请输入reqId">
+</div>
+<div class="form-row">
+    <label for="node-input-productkey"><i class="fa fa-key"></i> method</label>
+    <input type="text" id="node-input-productkey" placeholder="请输入method">
+</div>
+<div class="form-row">
+    <label for="node-input-deviceName"><i class="fa fa-desktop"></i> version</label>
+    <input type="text" id="node-input-deviceName" placeholder="请输入version">
+</div>
+<div class="form-row">
+    <label for="node-input-deviceSecret"><i class="fa fa-lock"></i> timestamp</label>
+    <input type="text" id="node-input-deviceSecret" placeholder="请输入timestamp">
+</div>
+<div class="form-row">
+    <label for="node-input-host"><i class="fa fa-globe"></i> properties</label>
+    <input type="text" id="node-input-host" placeholder="请输入properties">
+</div>
+</script>
+
+<script type="text/x-red" data-help-name="event format">
     <!-- 定义节点的帮助文本 -->
 <p>这个节点用来获取设备资源的接口。</p>
 <p>它需要配置以下参数：</p>
