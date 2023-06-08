@@ -1,12 +1,12 @@
 {
   "name": "@atorber/node-red-baidu-dmp",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "author": {
     "name": "atorber",
     "email": "atorber@163.com"
   },
   "bugs": {
-    "url": "https://github.com/atorber/node-red-contrib-baidu-iot-device/issues"
+    "url": "https://github.com/atorber/node-red-baidu-dmp/issues"
   },
   "dependencies": {
     "crypto": "^1.0.1",
@@ -18,7 +18,7 @@
     "urlencode": "^1.1.0"
   },
   "description": "MQTT Node for Baidu IoTPlatform using custom authentication",
-  "homepage": "https://github.com/atorber/node-red-contrib-baidu-iot-device#readme",
+  "homepage": "https://github.com/atorber/node-red-baidu-dmp#readme",
   "keywords": [
     "node-red",
     "mqtt",
@@ -27,6 +27,7 @@
   ],
   "license": "Apache-2.0",
   "node-red": {
+    "version": ">=2.0.0",
     "nodes": {
       "baidu-iot-device": "baidu-iot-device.js",
       "baidu-dmp":"baidu-dmp.js"
@@ -34,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/atorber/node-red-contrib-baidu-iot-device.git"
+    "url": "git+https://github.com/atorber/node-red-baidu-dmp.git"
   },
   "publishConfig": {
     "access": "public",
