@@ -51,7 +51,66 @@ module.exports = function (RED) {
     }
 
     // 注册节点类型
-    RED.nodes.registerType("device-auth", DeviceAuth);
+    RED.nodes.registerType("device auth", DeviceAuth);
+
+    function PropertyFormat(config) {
+        RED.nodes.createNode(this, config);
+        var node = this;
+
+        // 从配置中获取相关参数
+        var { instanceId, productkey, deviceName, deviceSecret, host } = config;
+
+        // 定义接口路径
+        var path = `/v1/devices/${instanceId}/${productkey}/${deviceName}/resources`;
+
+        // 注册输入事件监听器
+        node.on('input', function (msg) {
+            // 获取输入消息中的resourceType参数，默认为 "MQTT"
+            const payload = {
+                "reqId":"442c1da4-9d3a-4f9b-a6e9-bfe858e4ac43",
+                "method":"thing.property.post",
+                "version":"1.0",
+                "timestamp":new Date().getTime(),
+                "bindName":"MAIN",
+                "properties":msg.payload
+            }
+            msg.payload = payload;
+            node.send(msg);
+        });
+    }
+
+    // 注册节点类型
+    RED.nodes.registerType("property format", PropertyFormat);
+
+    function EventFormat(config) {
+        RED.nodes.createNode(this, config);
+        var node = this;
+
+        // 从配置中获取相关参数
+        var { instanceId, productkey, deviceName, deviceSecret, host } = config;
+
+        // 定义接口路径
+        var path = `/v1/devices/${instanceId}/${productkey}/${deviceName}/resources`;
+
+        // 注册输入事件监听器
+        node.on('input', function (msg) {
+            // 获取输入消息中的resourceType参数，默认为 "MQTT"
+            const payload = {
+                "reqId":"442c1da4-9d3a-4f9b-a6e9-bfe858e4ac43",
+                "method":"thing.event.post",
+                "version":"1.0",
+                "timestamp":new Date().getTime(),
+                "bindName":"MAIN",
+                "events":msg.payload
+            }
+            msg.payload = payload;
+            node.send(msg);
+        });
+    }
+
+    // 注册节点类型
+    RED.nodes.registerType("event format", EventFormat);
+
 }
 
 // 创建请求签名
