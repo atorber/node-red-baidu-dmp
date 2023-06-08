@@ -277,7 +277,7 @@
                     <div class="form-row">
                         <label for="node-config-input-cleansession" style="width: auto;">
                             <input type="checkbox" id="node-config-input-cleansession" style="position: relative;vertical-align: bottom; top: -2px; width: 15px;height: 15px;">
-                            <span id="node-config-input-cleansession-label" data-i18n="device.label.cleansession"></span>
+                            <span data-i18n="device.label.cleansession"></span>
                         </label>
                     </div>
                     <div class="form-row mqtt5">
@@ -292,7 +292,7 @@
             </div>
             <br>
         </div>
-        <div id="device-broker-tab-security" style="display:none">
+        <!-- <div id="device-broker-tab-security" style="display:none">
             <div class="form-row">
                 <label for="node-config-input-user"><i class="fa fa-user"></i> <span data-i18n="common.label.username"></span></label>
                 <input disabled="disabled" type="text" id="node-config-input-user" data-i18n="[placeholder]device.placeholder.username">
@@ -301,7 +301,7 @@
                 <label for="node-config-input-password"><i class="fa fa-lock"></i> <span data-i18n="common.label.password"></span></label>
                 <input disabled="disabled" type="password" id="node-config-input-password" data-i18n="[placeholder]device.placeholder.password">
             </div>
-        </div>
+        </div> -->
         <div id="device-broker-tab-messages" style="display:none">
             <div id="device-broker-section-birth">
                 <div class="red-ui-palette-header">
@@ -493,7 +493,7 @@
                 "productkey": { value: "", required: true },
                 "devicename": { value: "", required: true },
                 "devicesecert": { value: "", required: true },
-                "effectivetime": { value: "1" , required: true},
+                "effectivetime": { value: "1", required: true },
                 name: { value: "" },
                 broker: { value: "", },
                 port: { value: 1883, required: false, validate: RED.validators.number(true) },
@@ -566,10 +566,10 @@
                     id: "device-broker-tab-connection",
                     label: this._("device.tabs-label.connection")
                 });
-                tabs.addTab({
-                    id: "device-broker-tab-security",
-                    label: this._("device.tabs-label.security")
-                });
+                // tabs.addTab({
+                //     id: "device-broker-tab-security",
+                //     label: this._("device.tabs-label.security")
+                // });
 
                 tabs.addTab({
                     id: "device-broker-tab-messages",
