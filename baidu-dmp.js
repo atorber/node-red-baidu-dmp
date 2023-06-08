@@ -50,7 +50,7 @@ node.on('input', function(msg) {
     }
 
     // 注册节点类型
-    RED.nodes.registerType("dmp-auth", DeviceAuth);
+    RED.nodes.registerType("device-auth", DeviceAuth);
 }
 
 // 创建请求签名
