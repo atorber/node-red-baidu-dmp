@@ -64,7 +64,7 @@ async function doreq(HOST, PORT, INSTANCE, PRODUCT_KEY, DEVICE_NAME, DEVICE_SECR
         // console.log(r)
         str = JSON.stringify(r) + '\n'
     } catch (err) {
-        console.error('请求出错了',err.error)
+        console.error('请求出错了', err.error)
         str = JSON.stringify(err.error) + '\n'
     }
     console.log(str)
@@ -494,38 +494,38 @@ module.exports = function (RED) {
             } = node
             //  console.log('devicesecert=========================', devicesecert)
             //  console.log('node=========================', node)
-   
+
             try {
-    let keys = ''
-    if (devicesecert) {
-        keys = await doreq(endpoint, endpointport, instanceid, productkey, devicename, devicesecert).catch((error) => {
-            node.error('doRequest 函数失败: ' + error.message);
-            return '';
-        });
+                let keys = ''
+                if (devicesecert) {
+                    keys = await doreq(endpoint, endpointport, instanceid, productkey, devicename, devicesecert).catch((error) => {
+                        node.error('doRequest 函数失败: ' + error.message);
+                        return '';
+                    });
 
-        // console.log('cert=========================', keys)
-    }
+                    // console.log('cert=========================', keys)
+                }
 
-    if (keys) {
-        const mqttconfig = JSON.parse(keys);
+                if (keys) {
+                    const mqttconfig = JSON.parse(keys);
 
-        if (mqttconfig && mqttconfig.content) {
-            node.broker = mqttconfig.content.broker;
-            node.port = mqttconfig.content.port;
-            node.clientid = mqttconfig.content.clientid;
-            node.credentials = {
-                user: mqttconfig.content.username,
-                password: mqttconfig.content.password
-            };
-        } else {
-            node.error('无法解析 MQTT 配置');
-        }
-    } else {
-        node.error('设备密钥为空或请求未返回有效结果');
-    }
-} catch (error) {
-    node.error('解析错误: ' + error.message);
-}
+                    if (mqttconfig && mqttconfig.content) {
+                        node.broker = mqttconfig.content.broker;
+                        node.port = mqttconfig.content.port;
+                        node.clientid = mqttconfig.content.clientid;
+                        node.credentials = {
+                            user: mqttconfig.content.username,
+                            password: mqttconfig.content.password
+                        };
+                    } else {
+                        node.error('无法解析 MQTT 配置');
+                    }
+                } else {
+                    node.error('设备密钥为空或请求未返回有效结果');
+                }
+            } catch (error) {
+                node.error('解析错误: ' + error.message);
+            }
 
             function createLWT(topic, payload, qos, retain, v5opts, v5SubPropName) {
                 let message = undefined;
