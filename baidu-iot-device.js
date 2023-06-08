@@ -399,6 +399,7 @@ module.exports = function (RED) {
 
     function handleConnectAction(node, msg, done) {
         let actionData = typeof msg.broker === 'object' ? msg.broker : null;
+        console.debug(actionData)
         if (node.brokerConn.canConnect()) {
             // Not currently connected/connecting - trigger the connect
             if (actionData) {
