@@ -475,6 +475,17 @@
             "invalid-json-parse": "无法解析JSON字符串"
         }
     },
+    "mocknode": {
+        "label": {
+            "syntax": "返回",
+            "text": "数据占位符",
+            "json": "数据模板",
+            "option": "参数来源"
+        },
+        "errors": {
+            "json-error": "解析 JSON 时发生错误"
+        }
+    },
     "httpin": {
         "label": {
             "method": "请求方式",

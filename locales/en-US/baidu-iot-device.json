@@ -571,6 +571,17 @@
             "invalid-action-badsubscription": "msg.topic is missing or invalid"
         }
     },
+    "mocknode": {
+        "label": {
+            "syntax": "Return",
+            "text": "Data Placeholder  ",
+            "json": "Data Template ",
+            "option": "Get Option"
+        },
+        "errors": {
+            "json-error": "error trying to parse string to JSON"
+        }
+    },
     "httpin": {
         "label": {
             "method": "Method",

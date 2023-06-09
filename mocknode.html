@@ -1,0 +1,117 @@
+
+<script type="text/x-red" data-template-name="mock node">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-field"><i class="fa fa-edit"></i> <span data-i18n="node-red:template.label.property"></span></label>
+        <input type="text" id="node-input-field" placeholder="payload" style="width:275px;">
+        <input type="hidden" id="node-input-fieldType">
+    </div>
+
+    <div class="form-row" style="position: relative; margin-bottom: 0px;">
+        <label for="node-input-template"><i class="fa fa-file-code-o"></i> <span data-i18n="node-red:template.label.template"></span></label>
+        <input type="hidden" id="node-input-template" autofocus="autofocus">
+    </div>
+    <div class="form-row node-text-editor-row">
+        <div style="height:250px;" class="node-text-editor" id="node-input-template-editor"></div>
+    </div>
+    <div class="form-row">
+        <label for="node-input-syntax"><i class="fa fa-code"></i> <span data-i18n="mocknode.label.syntax"></span></label>
+        <select id="node-input-syntax" style="width:180px;">
+            <option value="json" data-i18n="mocknode.label.json"></option>
+            <option value="text" data-i18n="mocknode.label.text"></option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="mock node">
+    <p>使用mockjs创建测试数据，</p>
+    
+    
+    <p>分为数据模版和数据占位符两种模拟模式，数据模板主要返回json字符串，数据占位符则返回字符串。具体语法参照mockjs语法进行模拟</p>
+   
+    <pre>{
+        "object|2": {
+          "310000": "上海市",
+          "320000": "江苏省",
+          "330000": "浙江省",
+          "340000": "安徽省"
+        }
+      }</pre>
+      <pre>@range(1, 10, 3)</pre>
+  
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('mock node',{
+        color:"#FFF0F5",
+        category: 'IoT',
+        paletteLabel:"mock node",
+        defaults: {
+            name: {value:""},
+            field: {value:"payload"},
+            fieldType: {value:"msg"},
+            // optionField: {value:"MBOption"},
+            // optionFieldType: {value:"flow"},
+            syntax: {value:"json"},
+            template: {
+                    "array|3": [
+                        "Hello",
+                        "Mock.js",
+                        "!"
+                    ]}
+                },
+        inputs:1,
+        outputs:1,
+        icon: "mockjs.png",
+        label: function() {
+            return this.name || "mock node";
+        },
+        oneditprepare: function() {
+            var that = this;
+            if (!this.fieldType) {
+                this.fieldType = 'msg';
+            }
+            $("#node-input-field").typedInput({
+                default: 'msg',
+                types: ['msg','flow','global'],
+                typeField: $("#node-input-fieldType")
+            });
+            $("#node-input-optionField").typedInput({
+                default: 'flow',
+                types: ['msg','flow','global'],
+                typeField: $("#node-input-optionFieldType")
+            });
+
+            this.editor = RED.editor.createEditor({
+                id: 'node-input-template-editor',
+                mode: 'ace/mode/handlebars',
+                value: $("#node-input-template").val()
+            });
+            RED.library.create({
+                url:"functions", // where to get the data from
+                type:"function", // the type of object the library is for
+                editor:that.editor, // the field name the main text body goes to
+                fields:['name','outputs']
+            });
+            this.editor.focus();
+        },
+        oneditsave: function() {
+            $("#node-input-template").val(this.editor.getValue())
+            delete this.editor;
+        },
+        oneditresize: function(size) {
+            var rows = $("#dialog-form>div:not(.node-text-editor-row)");
+            var height = $("#dialog-form").height();
+            for (var i=0;i<rows.size();i++) {
+                height -= $(rows[i]).outerHeight(true);
+            }
+            var editorRow = $("#dialog-form>div.node-text-editor-row");
+            height -= (parseInt(editorRow.css("marginTop"))+parseInt(editorRow.css("marginBottom")));
+            $(".node-text-editor").css("height",height+"px");
+            this.editor.resize();
+        }
+    });
+</script>

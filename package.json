@@ -1,6 +1,6 @@
 {
   "name": "@atorber/node-red-baidu-dmp",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "author": {
     "name": "atorber",
     "email": "atorber@163.com"
@@ -15,7 +15,8 @@
     "mqtt": "^2.14.0",
     "request-promise": "^4.2.6",
     "url": "^0.11.0",
-    "urlencode": "^1.1.0"
+    "urlencode": "^1.1.0",
+    "mockjs": "^1.1.0"
   },
   "description": "MQTT Node for Baidu IoTPlatform using custom authentication",
   "homepage": "https://github.com/atorber/node-red-baidu-dmp#readme",
@@ -30,7 +31,8 @@
     "version": ">=2.0.0",
     "nodes": {
       "baidu-iot-device": "baidu-iot-device.js",
-      "baidu-dmp":"baidu-dmp.js"
+      "baidu-dmp":"baidu-dmp.js",
+      "mocknode":"mocknode.js"
     }
   },
   "repository": {
